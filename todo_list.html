@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--1. 使用ng-app指令声明AngularJS管理边界，名字要在js里面声明-->
+<html lang="en" ng-app="todoList">
+<head>
+    <meta charset="UTF-8">
+    <title>todoList</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<!--2. JS声明的controller要绑定代码片段里面-->
+<body style="padding:10px;" ng-controller="TaskCtrl">
+    <div id="input-group">
+        <!--3. 变量绑定，在intpu输入内容就回自动绑定到下面JS里$scope.task-->
+        <input ng-model="task" type="text" class="form-control">
+        <span class="input-group-btn">
+            <!--5. 绑定提交的点击事件-->
+            <button class="btn btn-default" ng-click="add()">提交</button>
+        </span>
+    </div>
+    <!--7. 如果没有数据隐藏列表-->
+    <!--<h4 ng-hide="tasks.length==0">任务列表</h4>-->
+    <!--下面这个性能好，推荐的，因为上面是先生成页面在隐藏，这个是先判断是否有在生成 html代码-->
+    <h4 ng-if="tasks.length>0">任务列表</h4>
+    <ul class="list-group">
+        <!--4. 数组绑定，通过下标管理数组防止同名字报错（track by $index）-->
+        <li ng-repeat="item in tasks track by $index" class="list-group-item">
+            {{item}}
+            <!--6. 删除功能-->
+            <a ng-click="tasks.splice($index,1)">删除</a>
+        </li>
+    </ul>
+</body>
+
+<script src="js/angular.min.js"></script>
+<script>
+    angular.module('todoList',[])
+    .controller('TaskCtrl',function($scope){
+        $scope.task='';
+        $scope.tasks=[];
+        $scope.add=function(){
+            $scope.tasks.push($scope.task);
+        }
+    })
+</script>
+
+</html>
