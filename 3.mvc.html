@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>angularjs mvc</title>
+</head>
+<body>
+    <!--2. 绑定控制器-->
+    <div ng-controller="TaskCtrl">
+        <!--3. 双向绑定-->
+        <h1>{{msg}}</h1>
+    </div>
+</body>
+<script src="js/angular.min.js"></script>
+<script>
+    /*1. 创建一个模块，[]可以引入angularjs之前定义的其他模块*/
+    angular.module('app',[])
+    /*2. 模块下，定义一个控制器，每一个controller就相当于一个简化的mvc,MyCtrl=C,$scope=M,页面HTML展示的div=V*/
+    .controller('TaskCtrl',function($scope){
+        <!--3. 双向绑定-->
+        $scope.msg = 'jerome';
+    })
+</script>
+</html>
