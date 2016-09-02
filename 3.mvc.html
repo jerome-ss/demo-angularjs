@@ -3,15 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>angularjs mvc</title>
+    <link rel="stylesheet" href="css/foundation.min.css"/>
+    <script src="js/angular.min.js"></script>
 </head>
 <body>
-    <!--2. 绑定控制器-->
+    <!--2. 绑定控制器，TaskCtrl的作用域为下面div内-->
     <div ng-controller="TaskCtrl">
-        <!--3. 双向绑定-->
-        <h1>{{msg}}</h1>
+        <!--3. 双向绑定（下面的会进行联动）-->
+        <input type="text" ng-model="msg">
+        <div>msg = {{msg}}</div>
+        <!--3.1 输入“button”可以看到下面的会变成一个button图标，因为样式-->
+        <div class="{{msg}}">class = {{msg}}</div>
+        <!--3.2 首次加载界面会有“{{msg}}”信息（Ctrl Shift + F5可以看到），因为页面加载的时候会先把"{{msg}}"渲染出来
+                可以通过ng-bind属性或者ng-cloak属性或者将angularjs.js放到头部-->
+        <!--ng-bind = <div ng-bind="msg"></div>-->
+        <!--4. 登陆例子-->
+        <br>
+        登陆例子
+        <input type="text" ng-model="name">
+        <div class="button" ng-click="login()">登陆</div>
+        <div ng-show="errorMsg.length>0" class="alert-box">{{errorMsg}}</div>
     </div>
 </body>
-<script src="js/angular.min.js"></script>
+
 <script>
     /*1. 创建一个模块，[]可以引入angularjs之前定义的其他模块*/
     angular.module('app',[])
@@ -19,6 +33,14 @@
     .controller('TaskCtrl',function($scope){
         <!--3. 双向绑定-->
         $scope.msg = 'jerome';
+        <!--4. 登陆例子,$scope 中变量和方法的使用-->
+        $scope.login= function () {
+            if($scope.name == 'jerome'){
+                alert('登陆成功');
+            }else{
+                $scope.errorMsg = '登陆失败';
+            }
+        }
     })
 </script>
 </html>
