@@ -1,0 +1,92 @@
+<!--自定义 Services 服务-->
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>angularjs service</title>
+    <link rel="stylesheet" href="css/foundation.min.css"/>
+    <script src="js/angular.min.js"></script>
+</head>
+<body>
+    <div ng-controller="MyCtrl">
+        <!--1. 在页面绑定-->
+        value_name = {{value_name}}
+        <br>
+        <!--2. 在页面绑定-->
+        constant_http = {{constant_http}}
+        <br>
+        <!--3. 在页面绑定-->
+        factory_data.msg = {{factory_data.msg}}
+        <br>
+        <!--4. 在页面绑定-->
+        service_user.getName() = {{service_name}}
+        <br>
+    </div>
+    <!--5. 案例：使用service实现多个controller数据共享-->
+    <div ng-controller="MyCtrl1">
+        <input type="text" ng-model="factory_shopCart.shopCart">
+        shopCart = {{factory_shopCart.shopCart}}
+    </div>
+    <div ng-controller="MyCtrl2">
+        <input type="text" ng-model="factory_shopCart.shopCart">
+        shopCart = {{factory_shopCart.shopCart}}
+    </div>
+
+</body>
+<script>
+    /*
+    AngularJS里的Services表现形式
+    value、constant、factory、service、provider*/
+
+    angular.module('app', [])
+    // 1. value的使用(变量声明以后可以修改)
+    .value("value_name", "jerome")
+    .value("value_name", "jerome2")
+    // 2. constan的使用(常量声明以后不可改变)
+    .constant("constant_http","www.baidu.com")
+    .constant("constant_http","www.sina.com")
+    // 3. factory的使用(实际中最常使用)
+    .factory('factory_data',function() {
+        return {
+            msg: '你好',
+            setMsg: function () {
+                this.msg = '我不好';
+            }
+        }
+    })
+    // 4. service的使用(和factory类似)
+    .service('service_user',function() {
+        this.firstName = 'Su';
+        this.lastName = 'Zhida';
+        this.getName = function() {
+            return this.firstName + this.lastName;
+        }
+    })
+    .controller('MyCtrl', function ($scope, value_name, constant_http, factory_data, service_user) {
+        // 1. value的使用
+        $scope.value_name = value_name;
+        // 2. constan的使用
+        $scope.constant_http = constant_http;
+        // 3. factory的使用
+        $scope.factory_data = factory_data;
+        // 3.1 factory的使用 修改msg值
+        // factory_data.setMsg();
+        // 4. service的使用
+        $scope.service_name = service_user.getName();
+    })
+
+    // 5. 案例：使用service实现多个controller数据共享
+    .factory("factory_shopCart", function () {
+        return {
+            shopCart: '1'
+        }
+
+    })
+    .controller('MyCtrl1', function ($scope, factory_shopCart) {
+        $scope.factory_shopCart = factory_shopCart;
+    })
+    .controller('MyCtrl2', function ($scope, factory_shopCart) {
+        $scope.factory_shopCart = factory_shopCart;
+    })
+</script>
+</html>
