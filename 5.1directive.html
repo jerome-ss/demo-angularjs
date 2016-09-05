@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>directive demo</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body style="padding:10px;">
+    <hello_world></hello_world>
+</body>
+<script src="js/angular.min.js"></script>
+<script>
+    var app = angular.module('app', []);
+    app.directive('helloWorld', function () {
+        return {
+            //restrict: 'E', // 默认'A'
+            //replace : true, // html不显示我们自定义的directive名称标签
+            template: '<div>hello world!</div>'
+        }
+    });
+</script>
+</html>

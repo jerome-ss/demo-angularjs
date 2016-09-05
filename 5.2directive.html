@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>directive demo</title>
+</head>
+<body>
+<div ng-controller="appCtrl">
+    <div enter="loadData()">mouse enter here.</div>
+    <!--<div enter="delData()">mouse enter here.</div>-->
+</div>
+</body>
+<script src="js/angular.min.js"></script>
+<script>
+    var app = angular.module('app', []);
+    app.controller('appCtrl', function ($scope) {
+        $scope.loadData = function () {
+            alert('loadData...');
+        };
+        $scope.delData = function () {
+            alert('delData...');
+        };
+    });
+    app.directive('enter', function () {
+        return function (scope, element, attrs) {
+            element.bind('mouseenter', function () {
+                scope.$apply(attrs.enter);
+            });
+        }
+    });
+</script>
+</html>
