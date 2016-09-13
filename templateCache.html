@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+    <hello_world></hello_world>
+</body>
+<script src="js/angular.min.js"></script>
+<script>
+    var app = angular.module('app', []);
+
+    app.run(function ($templateCache) {
+        $templateCache.put('hello.html', '<div>hello world!</div>');
+    });
+
+    app.directive('helloWorld', function ($templateCache) {
+        return {
+            restrict: 'E',
+            template: $templateCache.get('hello.html')
+    }
+    });
+</script>
+</html>

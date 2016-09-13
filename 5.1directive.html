@@ -7,15 +7,30 @@
 </head>
 <body style="padding:10px;">
     <hello_world></hello_world>
+    <!--2. 内部嵌套代码-->
+    <!--
+    <hello_world>
+        <div>这是指令内部的内容</div>
+    </hello_world>
+    -->
 </body>
 <script src="js/angular.min.js"></script>
 <script>
     var app = angular.module('app', []);
     app.directive('helloWorld', function () {
         return {
+            /**
+             * restrict匹配模式
+             * E,   元素,          <hello_world title=Products></hello_world>     推荐
+             * A,   属性(默认),    <div hello_world=Products></div>               推荐
+             * C,   样式类         <div class=hello_world:Products></div>
+             * A,   属性,          <!-- directive:hello_world Products -->
+             */
             //restrict: 'E', // 默认'A'
             //replace : true, // html不显示我们自定义的directive名称标签
             template: '<div>hello world!</div>'
+            // 2. 内部嵌套代码
+            // template: '<div>hello world!<div ng-transclude></div></div>'
         }
     });
 </script>

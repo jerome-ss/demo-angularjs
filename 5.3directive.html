@@ -15,7 +15,7 @@
     app.directive('food', function () {
         return {
             restrict: 'E',
-            scope: {},
+            scope: {}, // 创建独立的作用域
             controller: function ($scope) {
                 $scope.foods = [];
                 this.addApple = function () {
