@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>directive 独立Scope演示</title>
+</head>
+<body>
+    <hello_world></hello_world>
+    <hello_world></hello_world>
+    <hello_world></hello_world>
+</body>
+<script src="js/angular.min.js"></script>
+<script>
+    var app = angular.module('app', []);
+
+    app.directive('helloWorld', function () {
+        return {
+            restrict: 'E',
+            scope: {}, // 变成独立scope,如果没有加这句三个输入框的输入都会同步修改
+            template: '<div><input type="text" ng-model="userName">{{userName}}</div>'
+        }
+    });
+    /**
+     * AngularJS Directive 隔离 Scope 数据交互【http://blog.csdn.net/jerome_s/article/details/52534530】
+     * scope的绑定策略
+     * @,把当前属性作为字符串传递。也可以绑定来自外层socpe的值，在属性值中插入{{}}即可
+     * =,与父scope中的属性进行双向绑定
+     * &,传递一个来自父scope的函数，稍后调用
+     */
+</script>
+</html>
