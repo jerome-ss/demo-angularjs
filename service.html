@@ -35,8 +35,17 @@
 </body>
 <script>
     /**
-    AngularJS里的Services表现形式
-    value、constant、factory、service、provider*/
+     * AngularJS里的Services表现形式
+     * value、constant、factory、service、provider
+     *
+     * Service特性
+     * Service都是单例的
+     * Service由$injector负责实例化
+     * Service在整个应用的声明周期中存在，可以用来共享数据
+     * 在需要使用的地方利用依赖注入机制注入Service
+     * 自定义的Service需要写在内置的Service后面
+     * 内置Service的命名以$符号开头，自定义Service应该避免$开头
+     */
 
     angular.module('app', [])
     // 1. value的使用(变量声明以后可以修改)

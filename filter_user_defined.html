@@ -1,0 +1,19 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义filter</title>
+</head>
+<body>
+    {{'Jerome' | myFilter}}
+</body>
+<script src="js/angular.min.js"></script>
+<script>
+    var app = angular.module('myApp', []);
+    app.filter('myFilter', function () {
+        return function (item) {
+            return item + ' hello';
+        }
+    })
+</script>
+</html>

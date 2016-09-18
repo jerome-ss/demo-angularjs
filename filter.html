@@ -1,0 +1,23 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>filter</title>
+    <script src="js/angular.js"></script>
+</head>
+<body>
+    {{1473835293763 | date}}
+    <br>
+    {{1473835293763 | date:"yyyy-MM-dd hh:mm:ss"}}
+    <br>
+    {{ 3600 | currency: "￥"}}
+    <!--使用ISO标准日期格式 -->
+    {{ '2015-05-20T03:56:16.887Z' | date:"MM/dd/yyyy @ h:mma"}}
+</body>
+<script>
+    /**
+     * https://docs.angularjs.org/api/ng/filter/
+     */
+    var app = angular.module('myApp', []);
+</script>
+</html>
