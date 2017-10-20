@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
+
 <head>
     <meta charset="UTF-8">
     <title>Directive与Controller之间的会话</title>
 </head>
-    <body>
-    <food apple orange banana>all food</food>
-    <br>
+
+<body>
+    <food apple orange banana>all food</food><br>
     <food orange banana>all food2</food>
-    </body>
+</body>
+
 <script src="js/angular.min.js"></script>
 <script>
+
     var app = angular.module('app', []);
     app.directive('food', function () {
         return {
@@ -35,6 +38,7 @@
             }
         }
     });
+
     app.directive('apple', function () {
         return {
             require: 'food',
@@ -59,5 +63,6 @@
             }
         }
     });
+
 </script>
 </html>

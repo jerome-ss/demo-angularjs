@@ -11,6 +11,7 @@
 </body>
 <script src="js/angular.min.js"></script>
 <script>
+
     var app = angular.module('app', []);
 
     app.controller('myCtrl', function ($scope) {
@@ -24,6 +25,7 @@
                 msg: '@'
             },
             template: '<div>{{msg}}</div>'
+            
             /* 使用msg: '@'替换下面语句
             link: function (scope, element, attrs) {
                 scope.msg = attrs.msg;

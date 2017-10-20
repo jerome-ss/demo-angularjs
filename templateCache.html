@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
+
 <head>
     <meta charset="UTF-8">
     <title>AngularJS缓存的使用</title>
 </head>
+
 <body>
     <hello_world></hello_world>
 </body>
+
 <script src="js/angular.min.js"></script>
 <script>
     var app = angular.module('app', []);
@@ -19,7 +22,8 @@
         return {
             restrict: 'E',
             template: $templateCache.get('hello.html')
-    }
+        }
     });
 </script>
+
 </html>

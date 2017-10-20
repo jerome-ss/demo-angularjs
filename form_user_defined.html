@@ -1,5 +1,6 @@
 <!doctype html>
 <html ng-app="form-example2">
+
 <head>
     <title>自定义表单输入</title>
     <style type="text/css">
@@ -9,12 +10,14 @@
         }
     </style>
 </head>
+
 <body>
 <div>
     <div contentEditable="true" ng-model="content" title="Click to edit">Some</div>
     <pre>model = {{content}}</pre>
 </div>
 </body>
+
 <script src="js/angular.min.js"></script>
 <script>
     angular.module('form-example2', [])
@@ -40,4 +43,5 @@
         };
     });
 </script>
+
 </html>

@@ -1,19 +1,24 @@
 <!doctype html>
 <html ng-app="myApp">
+
 <head>
     <meta charset="UTF-8">
     <title>自定义服务</title>
 </head>
+
 <body>
-<div>
-    <div ng-controller="appCtrl">
-        用户名：
-        <input type="text" ng-model="username">
-        <br>
-        <pre ng-show="username">{{users}}</pre>
+
+    <div>
+        <div ng-controller="appCtrl">
+            用户名：
+            <input type="text" ng-model="username">
+            <br>
+            <pre ng-show="username">{{users}}</pre>
+        </div>
     </div>
-</div>
+
 </body>
+
 <script src="js/angular.min.js"></script>
 <script>
     var app = angular.module('myApp', []);
@@ -50,4 +55,5 @@
         });
     })
 </script>
+
 </html>

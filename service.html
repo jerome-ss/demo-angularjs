@@ -1,32 +1,38 @@
 <!--自定义 Services 服务-->
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
+
 <head>
     <meta charset="UTF-8">
     <title>angularjs service</title>
     <link rel="stylesheet" href="css/foundation.min.css"/>
     <script src="js/angular.min.js"></script>
 </head>
+
 <body>
+
     <div ng-controller="MyCtrl">
+
         <!--1. 在页面绑定-->
-        value_name = {{value_name}}
-        <br>
+        value_name = {{value_name}} <br>
+
         <!--2. 在页面绑定-->
-        constant_http = {{constant_http}}
-        <br>
+        constant_http = {{constant_http}} <br>
+
         <!--3. 在页面绑定-->
-        factory_data.msg = {{factory_data.msg}}
-        <br>
+        factory_data.msg = {{factory_data.msg}} <br>
+
         <!--4. 在页面绑定-->
-        service_user.getName() = {{service_name}}
-        <br>
+        service_user.getName() = {{service_name}} <br>
+
     </div>
+
     <!--5. 案例：使用service实现多个controller数据共享-->
     <div ng-controller="MyCtrl1">
         <input type="text" ng-model="factory_shopCart.shopCart">
         shopCart = {{factory_shopCart.shopCart}}
     </div>
+
     <div ng-controller="MyCtrl2">
         <input type="text" ng-model="factory_shopCart.shopCart">
         shopCart = {{factory_shopCart.shopCart}}
@@ -38,25 +44,29 @@
      * AngularJS里的Services表现形式
      * value、constant、factory、service、provider
      *
-     * Service特性
-     * Service都是单例的
-     * Service由$injector负责实例化
-     * Service在整个应用的声明周期中存在，可以用来共享数据
-     * 在需要使用的地方利用依赖注入机制注入Service
-     * 自定义的Service需要写在内置的Service后面
-     * 内置Service的命名以$符号开头，自定义Service应该避免$开头
+     * Service特性：
      *
-     * 其他常用Service，共内置24个
+     * 1. Service都是单例的
+     * 2. Service由$injector负责实例化
+     * 3. Service在整个应用的声明周期中存在，可以用来共享数据
+     * 4. 在需要使用的地方利用依赖注入机制注入Service
+     * 5. 自定义的Service需要写在内置的Service后面
+     * 6. 内置Service的命名以$符号开头，自定义Service应该避免$开头
+     *
+     * 其他常用Service，共内置24个：
      * https://docs.angularjs.org/api/ng/service
      */
 
     angular.module('app', [])
+
     // 1. value的使用(变量声明以后可以修改)
     .value("value_name", "jerome")
     .value("value_name", "jerome2")
+
     // 2. constan的使用(常量声明以后不可改变)
     .constant("constant_http","www.baidu.com")
     .constant("constant_http","www.sina.com")
+
     // 3. factory的使用(实际中最常使用)
     .factory('factory_data',function() {
         return {
@@ -66,6 +76,7 @@
             }
         }
     })
+
     // 4. service的使用(和factory类似)
     .service('service_user',function() {
         this.firstName = 'Su';
@@ -74,6 +85,7 @@
             return this.firstName + this.lastName;
         }
     })
+
     .controller('MyCtrl', function ($scope, value_name, constant_http, factory_data, service_user) {
         // 1. value的使用
         $scope.value_name = value_name;

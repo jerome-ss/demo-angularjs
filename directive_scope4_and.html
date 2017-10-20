@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
+
 <head>
     <meta charset="UTF-8">
     <title>directive 独立Scope演示 “&”</title>
 </head>
+
 <body>
     <div ng-controller="myController">
         <div>父scope：
@@ -14,8 +16,10 @@
         </div>
     </div>
 </body>
+
 <script src="js/angular.min.js"></script>
 <script>
+
     var app = angular.module('app', []);
 
     app.controller("myController", function ($scope) {
@@ -31,11 +35,13 @@
             template: '<input type="button" value="在directive中执行父scope定义的方法" ng-click="action()"/>'
         }
     });
+
     /**
      * scope的绑定策略
      * @,把当前属性作为字符串传递。也可以绑定来自外层socpe的值，在属性值中插入{{}}即可
      * =,与父scope中的属性进行双向绑定
      * &,传递一个来自父scope的函数，稍后调用
      */
+
 </script>
 </html>

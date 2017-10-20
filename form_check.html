@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html ng-app="">
+
 <head lang="en">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/foundation.min.css"/>
     <title></title>
 </head>
+
 <body style="padding:10px;">
     <form name="f">
         <input type="text" ng-model="name" placeholder="用户名" required/>
@@ -13,6 +15,7 @@
         <button type="submit" ng-disabled="f.$invalid">提交</button>
     </form>
 </body>
+
 <script src="js/angular.min.js"></script>
 <script>
     /**
@@ -21,4 +24,5 @@
      * Angular提供了一个ng-pristine指令，把这个指令写在form标签中，Angular就知道你想使用原生的form标签了。
      */
 </script>
+
 </html>
